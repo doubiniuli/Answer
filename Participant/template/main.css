@@ -29,6 +29,12 @@ img {
     vertical-align: middle;
 }
 
+/*span {*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+    /*font-size: 40px;*/
+/*}*/
+
 /* other css */
 .index-body {
     width: 750px;
@@ -42,15 +48,28 @@ img {
     overflow-x: hidden;
 }
 
-.problem-A {
-    position: relative;
-    top: 34%;
-    left: 12%;
-    right: 87%;
-    bottom: 40%;
+.problem-A-div {
+    position: absolute;
+    top: 34.5%;
+    left: 12.5%;
+    width: 75%;
+    height: 6%;
 }
-
+.problem-A-text {
+    position: absolute;
+    top: 36%;
+    left: 24%;
+    width: 52%;
+    height: 2%;
+}
 .problem-body {
     background-image: url("bg.jpg");
     background-size: cover;
+}
+
+.problem-selector {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    color: white;
 }
