@@ -1,10 +1,23 @@
 /*common css*/
+
 .container {
     position: relative;
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
 }
+
+html, body, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+/*body {*/
+    /*background-size: 100%, 100%;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
 
 .full-pic {
     display: block;
@@ -20,4 +33,24 @@ img {
 .index-body {
     width: 750px;
     height: 1334px;
+}
+
+.full-container {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.problem-A {
+    position: relative;
+    top: 34%;
+    left: 12%;
+    right: 87%;
+    bottom: 40%;
+}
+
+.problem-body {
+    background-image: url("bg.jpg");
+    background-size: cover;
 }

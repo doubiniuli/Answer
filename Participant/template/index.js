@@ -3,7 +3,9 @@
  */
 
 $('body').click(function(e) {
+    var img = $('img')[0];
     var x = e.pageX;
     var y = e.pageY;
-    console.log(e.pageX + ' ' + e.pageY)
+    console.log(e.pageX/img.width + ' ' + e.pageY/img.height)
 });
+
