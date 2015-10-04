@@ -1,3 +1,22 @@
+/*common css*/
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.full-pic {
+    display: block;
+    width: 100%;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/* other css */
 .index-body {
     width: 750px;
     height: 1334px;
