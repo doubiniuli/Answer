@@ -7,10 +7,35 @@
 </head>
 <body>
     <div class="full-container">
-        <img src="p1correct.jpg" class="full-pic">
+        <img src="index.jpg" class="full-pic">
     </div>
 </body>
 
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="index.js"></script>
+<script src="utils.js"></script>
+
+<script>
+
+$('body').click(function (e) {
+    var left = 0.274;
+    var top = 0.69;
+    var right = 0.73;
+    var bottom = 0.76;
+    var img = $('body')[0];
+    var width = img.clientWidth;
+    var height = img.clientHeight;
+    var x = e.pageX / width;
+    var y = e.pageY / height;
+
+    console.log(x)
+    console.log(y);
+    console.log(ptInRect);
+    console.log(ptInRect(x, y, left, top, right, bottom))
+
+    if (ptInRect(x, y, left, top, right, bottom)) {
+        window.location.href="./problem.html";
+    }
+});
+</script>
 </html>

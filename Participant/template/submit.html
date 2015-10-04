@@ -30,4 +30,25 @@
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="utils.js"></script>
+
+<script>
+    var submitLeft = 0.32;
+    var submitTop = 0.685;
+
+    var submitRight = 0.676;
+    var submitBottom = 0.74;
+
+    $('body').click(function(e) {
+    var img = $('body')[0];
+    var width = img.clientWidth;
+    var height = img.clientHeight;
+    var x = e.pageX;
+    var y = e.pageY;
+
+    if (ptInRect(x / width, y / height, submitLeft, submitTop, submitRight, submitBottom)) {
+        $('user_info').submit();
+        window.location.href="http://www.baidu.com";
+    }
+});
+</script>
 </html>
