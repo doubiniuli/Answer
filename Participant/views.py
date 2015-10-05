@@ -1,6 +1,7 @@
 #coding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import Context
 from models import Participant
 from django.shortcuts import render_to_response
 # Create your views here.
@@ -20,12 +21,13 @@ def add_participant(request):
     phone = request.GET.get('phone')
     return HttpResponse('')
 
-
 def list_participant(request):
     pass
 
 
 def get_problem_html(request):
-    num = request.GET.get('name')
-    return render_to_response("template/problem-2.html", problem_info.get(num))
+    name = request.GET.get('name')
+    correct = request.GET.get('correct')
+    return render_to_response("template/problem-2.html", Context(dict(problem_info=problem_info.get(name),
+                                                                      correct=correct)))
 

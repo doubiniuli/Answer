@@ -1,10 +1,10 @@
 
 function getBackgroundId(s) {
-    return 'P' + s + '-img';
+    return '#P' + s + '-img';
 }
 
 function getTextGroundId(s) {
-    return 'P' + s + '-text';
+    return '#P' + s + '-text';
 }
 
 function clickChoices(s) {
@@ -12,7 +12,7 @@ function clickChoices(s) {
     var bg = $(bgName)[0];
 //    $(bg)[0].src = 'normal.png';
     //sleep?
-    bg.src = 'normal.png';
+    bg.src = '/static/normal.png';
 
     var textName = getTextGroundId(s);
     var text = $(textName)[0];
