@@ -6,7 +6,12 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css">
 </head>
 <script>
-    correctAnswer = 'A';
+    answered = false;
+    commonInfo = Object();
+    commonInfo.isAnswered = false;
+    commonInfo.correctAnswer = "{{ problem_info.correct }}";
+    commonInfo.next = "{{ problem_info.next }}";
+    commonInfo.correctNum = {{ correctNum }};
     choiceTextMap = {
         'A' : "A: 上海奥迪国际赛车场",
         'B' : "B: 珠海国际赛车场",
@@ -21,7 +26,7 @@
                 <img id="PA-img" src="/static/normal2.png" class="full-pic">
             </div>
             <div class="choices-text choices-A-text">
-                <div id="PAText" class="problem-selector">
+                <div id="PA-text" class="problem-selector">
                     {{ problem_info.A }}
                 </div>
             </div>
@@ -31,9 +36,11 @@
             <div id="PB-div" class="choices choices-B-div">
                 <img id="PB-img" src="/static/normal2.png" class="full-pic">
             </div>
-            <div id="PB-text" class="choices-text choices-B-text">
-                <div class="problem-selector">
+            <div class="choices-text choices-B-text">
+                <div id="PB-text" class="problem-selector">
+                    <p style="width: 100%;height: 100%">
                     {{ problem_info.B }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -41,21 +48,24 @@
             <div id="PC-div" class="choices choices-C-div">
                 <img id="PC-img"  src="/static/normal2.png" class="full-pic">
             </div>
-            <div id="PC-text" class="choices-text choices-C-text">
-                <div class="problem-selector">
+            <div class="choices-text choices-C-text">
+                <div id="PC-text" class="problem-selector">
                     {{ problem_info.C }}
                 </div>
             </div>
         </div>
-        <div id="flag" class="flag flag-B">
+        <div id="flag" class="flag flag-{{ problem_info.correct }} hidden">
             <img src="/static/flag.png" class="full-pic">
         </div>
 
-        <div id="correct" class="correct-flg hidden">
+        <div id="correctResult" class="correct-flg hidden">
             <img src="/static/correct.png">
         </div>
-        <div id="correct" class="wa-flg hidden">
+        <div id="errorResult" class="wa-flg hidden">
             <img src="/static/error.png">
+        </div>
+        <div id="errorText" class="hidden wa-msg">
+            正确答案: {{ waInfo }}
         </div>
     </div>
 </body>

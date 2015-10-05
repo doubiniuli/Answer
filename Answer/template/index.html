@@ -7,13 +7,13 @@
 </head>
 <body>
     <div class="full-container">
-        <img src="index.jpg" class="full-pic">
+        <img src="/static/p1wa.jpg" class="full-pic">
     </div>
 </body>
 
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="index.js"></script>
-<script src="utils.js"></script>
+<script src="/static/index.js"></script>
+<script src="/static/utils.js"></script>
 
 <script>
 
@@ -28,7 +28,7 @@ $('body').click(function (e) {
     var x = e.pageX / width;
     var y = e.pageY / height;
 
-    console.log(x)
+    console.log(x);
     console.log(y);
     console.log(ptInRect);
     console.log(ptInRect(x, y, left, top, right, bottom))

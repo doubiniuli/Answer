@@ -7,7 +7,7 @@
     overflow-x: hidden;
 }
 
-html, body, div {
+html, body, div, p {
     margin: 0;
     padding: 0;
     border: 0;
@@ -99,11 +99,11 @@ img {
 }
 
 .choices-B-text {
-    top: 48%;
+    top: 48.5%;
 }
 
 .choices-C-text {
-    top: 60%;
+    top: 60.5%;
 }
 
 .problem-body {
@@ -140,4 +140,20 @@ img {
 
 .hidden {
     display: none;
+}
+
+.correct-answer {
+    color: green;
+}
+
+.failed-answer {
+    color: red;
+}
+
+.wa-msg {
+    position: absolute;
+    font-size: 20px;
+    top: 94%;
+    height: 3%;
+    left: 13.5%;
 }
