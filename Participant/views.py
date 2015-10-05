@@ -105,3 +105,7 @@ def get_problem_html(request):
         else:
             return render_to_response("template/title2.html", Context(dict()))
 
+
+@catch_view_exception
+def get_index_html(request):
+    return render_to_response("template/empty.html", Context(dict()))
