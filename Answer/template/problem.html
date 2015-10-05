@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<script>
+    correctAnswer = 'A';
+    choiceTextMap = {
+        'A' : "A: 上海奥迪国际赛车场",
+        'B' : "B: 珠海国际赛车场",
+        'C' : "C: 北京京港国际赛车场"
+    }
+</script>
+<body>
+    <div class="full-container">
+        <img src="bg.jpg" class="full-pic">
+        <div onclick="clickChoices('A')">
+            <div id="PA-div" class="choices choices-A-div">
+                <img id="PA-img" src="normal2.png" class="full-pic">
+            </div>
+            <div class="choices-text choices-A-text">
+                <div id="PA-text" class="problem-selector">
+                    这是测试文本
+                </div>
+            </div>
+        </div>
+
+        <div onclick="clickChoices('B')">
+            <div id="PB-div" class="choices choices-B-div">
+                <img id="PB-img" src="normal2.png" class="full-pic">
+            </div>
+            <div id="PB-text" class="choices-text choices-B-text">
+                <div class="problem-selector">
+
+                </div>
+            </div>
+        </div>
+        <div onclick="clickChoices('C')">
+            <div id="PC-div" class="choices choices-C-div">
+                <img id="PC-img"  src="normal2.png" class="full-pic">
+            </div>
+            <div id="PC-text" class="choices-text choices-C-text">
+                <div class="problem-selector">
+
+                </div>
+            </div>
+        </div>
+        <div id="flag" class="flag flag-B">
+            <img src="flag.png" class="full-pic">
+        </div>
+
+        <div id="correct" class="correct-flg hidden">
+            <img src="correct.png">
+        </div>
+        <div id="correct" class="wa-flg hidden">
+            <img src="error.png">
+        </div>
+    </div>
+</body>
+<script src="jquery/jquery.min.js"></script>
+<script src="problem.js"></script>
+</html>

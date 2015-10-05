@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^participant/add', 'Participant.views.add_participant'),
+    url(r'^participant/', include('Participant.urls')),
 ]
+
+urlpatterns += static(settings.STATIC_URL, settings.STATIC_ROOT)

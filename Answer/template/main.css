@@ -48,20 +48,64 @@ img {
     overflow-x: hidden;
 }
 
-.problem-A-div {
+.choices {
     position: absolute;
-    top: 34.5%;
     left: 12.5%;
     width: 75%;
     height: 6%;
 }
-.problem-A-text {
+
+.flag {
+    width: 14%;
+    height: 5%;
     position: absolute;
-    top: 36%;
+    /*top: 30%;*/
+    left: 42%
+}
+
+.flag-A {
+    top: 30%;
+}
+
+.flag-B {
+    top: 43%;
+}
+
+.flag-C {
+    top: 55%;
+}
+
+.choices-A-div {
+    top: 33.5%;
+}
+
+.choices-B-div {
+    top: 46.5%;
+}
+
+.choices-C-div {
+    top: 58.5%;
+}
+
+.choices-text {
+    position: absolute;
     left: 24%;
     width: 52%;
     height: 2%;
 }
+
+.choices-A-text {
+    top: 36%;
+}
+
+.choices-B-text {
+    top: 49%;
+}
+
+.choices-C-text {
+    top: 60.5%;
+}
+
 .problem-body {
     background-image: url("bg.jpg");
     background-size: cover;
@@ -70,6 +114,30 @@ img {
 .problem-selector {
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 20px;
     color: white;
+}
+
+.wrong-answer {
+    color: red;
+}
+
+.wa-flg {
+    position: absolute;
+    top: 82%;
+    height: 8%;
+    left: 30%;
+    width: 35%;
+}
+
+.correct-flg {
+    position: absolute;
+    top: 82%;
+    left: 20%;
+    height: 8%;
+    width: 45%;
+}
+
+.hidden {
+    display: none;
 }
