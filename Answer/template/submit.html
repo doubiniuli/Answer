@@ -3,32 +3,36 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <title></title>
 </head>
+<style>
+    .info-input {
+        border-radius: 5px;
+        border-color: gray;
+        border-width: 2px;
+        font-size: 35px;
+    }
+</style>
 <body style="border-right: 0px;">
-
-    <form id="user_info" class="full-container" action="index.html" method="post">
+    <form id="user_info" class="full-container" action="index.html" method="post" style="font-size: 20px">
         <div class="full-container">
-            <img src="submit.jpg" class="full-pic">
-            <div style="width: 100%; position: absolute; top: 31.9%;left: 26%; height: 6%">
-                <input id="name" type="text" style="width: 55%; height: 100%;"/>
+            <img src="/static/middle-img/submit.jpg" class="full-pic">
+            <div style="width: 100%; position: absolute; top: 32%;left: 26%; height: 4.6%;">
+                <input id="name" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
-            <div style="width: 100%; position: absolute; top: 39%;left: 26%; height: 6%">
-                <input id="phone" type="text" style="width: 55%; height: 100%;"/>
+            <div style="width: 100%; position: absolute; top: 39.3%;left: 26%; height: 4.6%;">
+                <input id="phone" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
-            <div style="width: 100%; position: absolute; top: 45.9%;left: 26%; height: 12%">
-                <textarea id="address" style="width: 55%; height: 100%; column-count: 3" rows="3"></textarea>
+            <div style="width: 100%; position: absolute; top: 46.6%;left: 26%; height: 10.5%;">
+                <textarea id="address" style="width: 54%; height: 100%; column-count: 3" rows="3" class="info-input"></textarea>
             </div>
         </div>
     </form>
-
 </body>
 
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="utils.js"></script>
 
 <script>
@@ -44,10 +48,9 @@
     var height = img.clientHeight;
     var x = e.pageX;
     var y = e.pageY;
-
+    console.log(x / width + ', ' + y / height);
     if (ptInRect(x / width, y / height, submitLeft, submitTop, submitRight, submitBottom)) {
         $('user_info').submit();
-        window.location.href="http://www.baidu.com";
     }
 });
 </script>
