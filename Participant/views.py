@@ -1,9 +1,9 @@
 #coding:utf-8
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context
 from models import Participant
 from django.shortcuts import render_to_response
+import logging
 # Create your views here.
 
 problem_infoMap = {
@@ -53,17 +53,37 @@ problem_infoMap = {
 }
 
 
+def catch_view_exception(fn):
+    def wrapped(*args, **kwargs):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as e:
+            from django.http import HttpResponse
+            logging.exception(e)
+            return HttpResponse(u'exception: %s' % str(e))
+
+    wrapped.__name__ = fn.__name__
+    return wrapped
+
+
+@catch_view_exception
 def add_participant(request):
     name = request.GET.get('name')
     address = request.GET.get('address')
     phone = request.GET.get('phone')
+    participant = Participant(name=name, address=address, phone=phone)
+    participant.save()
     return HttpResponse('')
 
 
+@catch_view_exception
 def list_participant(request):
-    pass
+    s = request.GET.get('s')
+    r = request.GET.get('r')
+    return Participant.objects.all()[s:s + r]
 
 
+@catch_view_exception
 def get_problem_html(request):
     name = request.GET.get('name')
     correct = request.GET.get('correct')
@@ -84,3 +104,4 @@ def get_problem_html(request):
             return render_to_response("template/title1.html", Context(dict()))
         else:
             return render_to_response("template/title2.html", Context(dict()))
+
