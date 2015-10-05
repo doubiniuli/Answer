@@ -27,7 +27,7 @@ $('body').click(function (e) {
     var y = e.pageY / height;
 
     if (isAcceptButton(x, y)) {
-        window.location.href="./submit.html";
+        window.location.href="/static/submit.html";
     } else if (isShareButton(x, y)) {
         window.location.href="http://www.cnblogs.com";
     }
