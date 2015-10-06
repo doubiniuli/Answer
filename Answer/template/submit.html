@@ -14,19 +14,19 @@
     }
 </style>
 <body style="border-right: 0px;">
-    <form id="user_info" class="full-container" action="index.html" method="post" style="font-size: 20px">
+    <form id="user_info" class="full-container" action="participant/add" method="post" style="font-size: 20px">
         <div class="full-container">
-            <img src="/static/middle-img/submit.jpg" class="full-pic">
+            <img src="middle-img/submit.jpg" class="full-pic">
             <div style="width: 100%; position: absolute; top: 32%;left: 26%; height: 4.6%;">
-                <input id="name" type="text" style="width: 54%; height: 100%;" class="info-input"/>
+                <input name="name" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
             <div style="width: 100%; position: absolute; top: 39.3%;left: 26%; height: 4.6%;">
-                <input id="phone" type="text" style="width: 54%; height: 100%;" class="info-input"/>
+                <input name="phone" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
             <div style="width: 100%; position: absolute; top: 46.6%;left: 26%; height: 10.5%;">
-                <textarea id="address" style="width: 54%; height: 100%; column-count: 3" rows="3" class="info-input"></textarea>
+                <textarea name="address" style="width: 54%; height: 100%" rows="3" class="info-input"></textarea>
             </div>
         </div>
     </form>
@@ -50,7 +50,7 @@
     var y = e.pageY;
     console.log(x / width + ', ' + y / height);
     if (ptInRect(x / width, y / height, submitLeft, submitTop, submitRight, submitBottom)) {
-        $('user_info').submit();
+        $('form')[0].submit();
     }
 });
 </script>
