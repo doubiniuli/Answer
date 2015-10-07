@@ -42,7 +42,7 @@ var imgUrl = "http://www.zhaopg.com/Public/images/11.png";
 
 $.ajax({
 	type: 'GET',
-	url: 'participant/weixin?appid=' + appid + '&url=' + encodeURIComponent(url),
+	url: '/participant/weixin?appid=' + appid + '&url=' + encodeURIComponent(url),
 	dataType: 'jsonp',
 	success: function (data) {
 		console.log(data);

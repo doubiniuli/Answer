@@ -1,6 +1,7 @@
 #coding:utf-8
 from django.http import HttpResponse
 from django.template import Context
+from django.views.decorators.csrf import csrf_exempt
 from models import Participant, Weixin
 from django.shortcuts import render_to_response
 import logging
@@ -76,6 +77,7 @@ def catch_view_exception(fn):
     return wrapped
 
 
+@csrf_exempt
 @catch_view_exception
 def add_participant(request):
     name = request.POST.get('name')
@@ -83,7 +85,8 @@ def add_participant(request):
     phone = request.POST.get('phone')
     participant = Participant(name=name, address=address, phone=phone)
     participant.save()
-    return HttpResponse('Success')
+    callback = request.GET.get("callback")
+    return HttpResponse(callback + '(Success)')
 
 
 @catch_view_exception
@@ -92,7 +95,7 @@ def list_participant(request):
     r = request.GET.get('r')
     return Participant.objects.all()[s:s + r]
 
-
+# @csrf_exempt
 @catch_view_exception
 def get_problem_html(request):
     name = request.GET.get('name')
@@ -130,25 +133,28 @@ def get_signature(jsapi, noncestr, timestamp, url):
 
 
 @catch_view_exception
+@csrf_exempt
 def get_submit(request):
     return render_to_response("template/submit.html", Context(dict()))
 
 
+@csrf_exempt
 @catch_view_exception
 def get_weixin_auth(request):
     url = request.GET.get("url")
     now = int(time.time())
+    callback = request.GET.get("callback")
 
     if wx_auth[1] > now + 15:
         update_weixin_auth()
 
     t = wx_auth[1]
     js_api = wx_auth[0].js_ticket
-    return HttpResponse(json.dumps({
+    return HttpResponse(callback + "(" + json.dumps({
         "jsTicket": js_api,
         "noncestr": NONCE_STR,
         "timestamp": str(t),
         "signature": get_signature(js_api, NONCE_STR, t, url).hexdigest()
-    }));
+    }) + ")");
 
 update_weixin_auth()
