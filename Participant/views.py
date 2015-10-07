@@ -1,9 +1,12 @@
 #coding:utf-8
 from django.http import HttpResponse
 from django.template import Context
-from models import Participant
+from models import Participant, Weixin
 from django.shortcuts import render_to_response
 import logging
+import time
+import hashlib
+import json
 # Create your views here.
 
 problem_infoMap = {
@@ -52,6 +55,13 @@ problem_infoMap = {
     }
 }
 
+wx_auth = None
+
+
+def update_weixin_auth():
+    global wx_auth
+    wx_auth = (Weixin.objects.all()[0], int(time.time()))
+
 
 def catch_view_exception(fn):
     def wrapped(*args, **kwargs):
@@ -68,12 +78,12 @@ def catch_view_exception(fn):
 
 @catch_view_exception
 def add_participant(request):
-    name = request.GET.get('name')
-    address = request.GET.get('address')
-    phone = request.GET.get('phone')
+    name = request.POST.get('name')
+    address = request.POST.get('address')
+    phone = request.POST.get('phone')
     participant = Participant(name=name, address=address, phone=phone)
     participant.save()
-    return HttpResponse('')
+    return HttpResponse('Success')
 
 
 @catch_view_exception
@@ -109,3 +119,29 @@ def get_problem_html(request):
 @catch_view_exception
 def get_index_html(request):
     return render_to_response("template/empty.html", Context(dict()))
+
+
+NONCE_STR = "FuckWeixinJsSDK"
+
+
+def get_signature(jsapi, noncestr, timestamp, url):
+    string1 = "jsapi_ticket=%s&noncestr=%s&timestamp=%s&url=%s" % (jsapi, noncestr, timestamp, url)
+    return hashlib.sha1(string1)
+
+
+@catch_view_exception
+def get_weixin_auth(request):
+    url = request.GET.get("url")
+    now = int(time.time())
+
+    if wx_auth[1] > now + 1500:
+        update_weixin_auth()
+
+    t = wx_auth[1]
+    js_api = wx_auth[0].js_ticket
+    return HttpResponse(json.dumps({
+        "jsTicket": js_api,
+        "noncestr": NONCE_STR,
+        "timestamp": str(t),
+        "signature": get_signature(js_api, NONCE_STR, t, url)
+    }));
