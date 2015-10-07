@@ -139,7 +139,7 @@ def get_weixin_auth(request):
     url = request.GET.get("url")
     now = int(time.time())
 
-    if wx_auth[1] > now + 1500:
+    if wx_auth[1] > now + 15:
         update_weixin_auth()
 
     t = wx_auth[1]
@@ -148,7 +148,7 @@ def get_weixin_auth(request):
         "jsTicket": js_api,
         "noncestr": NONCE_STR,
         "timestamp": str(t),
-        "signature": str(get_signature(js_api, NONCE_STR, t, url))
+        "signature": get_signature(js_api, NONCE_STR, t, url).hexdigest()
     }));
 
 update_weixin_auth()
