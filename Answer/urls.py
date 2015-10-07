@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', include('Participant.empty_urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^participant/', include('Participant.urls')),
-]
+    # url(r'^static/participant/', include('Participant.urls'))
+];
 
 urlpatterns += static(settings.STATIC_URL, settings.STATIC_ROOT)

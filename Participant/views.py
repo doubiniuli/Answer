@@ -130,6 +130,11 @@ def get_signature(jsapi, noncestr, timestamp, url):
 
 
 @catch_view_exception
+def get_submit(request):
+    return render_to_response("template/submit.html", Context(dict()))
+
+
+@catch_view_exception
 def get_weixin_auth(request):
     url = request.GET.get("url")
     now = int(time.time())
@@ -143,5 +148,7 @@ def get_weixin_auth(request):
         "jsTicket": js_api,
         "noncestr": NONCE_STR,
         "timestamp": str(t),
-        "signature": get_signature(js_api, NONCE_STR, t, url)
+        "signature": str(get_signature(js_api, NONCE_STR, t, url))
     }));
+
+update_weixin_auth()
