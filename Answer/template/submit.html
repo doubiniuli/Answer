@@ -18,15 +18,15 @@
         <div class="full-container">
             <img src="middle-img/submit.jpg" class="full-pic">
             <div style="width: 100%; position: absolute; top: 32%;left: 26%; height: 4.6%;">
-                <input name="name" type="text" style="width: 54%; height: 100%;" class="info-input"/>
+                <input id="name" name="name" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
             <div style="width: 100%; position: absolute; top: 39.3%;left: 26%; height: 4.6%;">
-                <input name="phone" type="text" style="width: 54%; height: 100%;" class="info-input"/>
+                <input id="phone" name="phone" type="text" style="width: 54%; height: 100%;" class="info-input"/>
             </div>
 
             <div style="width: 100%; position: absolute; top: 46.6%;left: 26%; height: 10.5%;">
-                <textarea name="address" style="width: 54%; height: 100%" rows="3" class="info-input"></textarea>
+                <textarea id="address" name="address" style="width: 54%; height: 100%" rows="3" class="info-input"></textarea>
             </div>
         </div>
     </form>
@@ -50,7 +50,20 @@
     var y = e.pageY;
     console.log(x / width + ', ' + y / height);
     if (ptInRect(x / width, y / height, submitLeft, submitTop, submitRight, submitBottom)) {
-        $('form')[0].submit();
+        name = $("input[id='name']").val();
+        phone = $("input[id='phone']").val();
+        address = $("textarea[id='address']").val();
+
+        url = "participant/add?name=" + name + "&phone=" + phone + "&address=" + address;
+        console.log(url);
+        $.ajax({type:"POST",
+            url: url,
+            data:{
+                name: name,
+                phone: phone,
+                address: address
+            }
+        })
     }
 });
 </script>
