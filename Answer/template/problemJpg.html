@@ -9,10 +9,19 @@
 
 <body>
     <div class="full-container">
-        <img id="selectNone" src="/static/middle-img/p{{ problem_info.id }}.jpg" class="full-pic">
-        <img id="selectA" src="/static/middle-img/p{{ problem_info.id }}Ar.jpg" class="full-pic hidden">
-        <img id="selectB" src="/static/middle-img/p{{ problem_info.id }}Br.jpg" class="full-pic hidden">
-        <img id="selectC" src="/static/middle-img/p{{ problem_info.id }}Cr.jpg" class="full-pic hidden">
+        <p class="p-img">
+            <img id="selectNone" src="/static/middle-img/p{{ problem_info.id }}.jpg" class="full-height">
+        </p>
+
+        <p class="p-img">
+            <img id="selectA" src="/static/middle-img/p{{ problem_info.id }}Ar.jpg" class="full-height hidden">
+        </p>
+        <p class="p-img">
+            <img id="selectB" src="/static/middle-img/p{{ problem_info.id }}Br.jpg" class="full-height hidden">
+        </p>
+        <p class="p-img">
+            <img id="selectC" src="/static/middle-img/p{{ problem_info.id }}Cr.jpg" class="full-height hidden">
+        </p>
     </div>
 </body>
 
@@ -35,6 +44,10 @@
     var selected = $('#selectNone')[0];
     var hasShowResult = false;
 
+    function jump2next() {
+        window.location = '/participant/problem?name=' + commonInfo.next + '&correct=' + commonInfo.correctNum;
+    }
+
     function selectX(s) {
         $(selected).addClass(' hidden ');
         selected = $('#select' + s)[0];
@@ -43,10 +56,7 @@
             commonInfo.correctNum += 1;
         }
         hasShowResult = true;
-    }
-
-    function jump2next() {
-        window.location = '/participant/problem?name=' + commonInfo.next + '&correct=' + commonInfo.correctNum;
+        setTimeout(jump2next, 1000);
     }
 
     $('body').click(function (e) {

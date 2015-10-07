@@ -5,7 +5,7 @@ import time
 import logging
 import os
 from Answer import settings
-os.environ['DJANGO_SETTINGS_MODULE'] = 'Answer.settings'
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'Answer.settings'
 
 APP_ID = "wx6ee8795bbaee6f5d"
 secret = "c187ef0bea83964dd4c89f41d1bffc42"
@@ -40,7 +40,7 @@ def update_weixin_model():
 
 if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-    settings.configure()
+    # settings.configure()
     # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Answer.settings")
     django.setup()
     while True:
