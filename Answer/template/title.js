@@ -14,6 +14,7 @@ var shareLeft = 0.55;
 var shareTop = 0.73;
 var shareRight = 0.91;
 var shareBottom = 0.79;
+var showSharePng = false;
 
 function isShareButton(x, y) {
     return ptInRect(x, y, shareLeft, shareTop, shareRight, shareBottom);
@@ -29,6 +30,15 @@ $('body').click(function (e) {
     if (isAcceptButton(x, y)) {
         window.location.href="/static/submit.html";
     } else if (isShareButton(x, y)) {
+        if (!showSharePng) {
+            showSharePng = true;
+            $($("#share_jpg")[0]).removeClass("hidden")
+        }
+    } else {
+        if (showSharePng) {
+            showSharePng = false;
+            $($("#share_jpg")[0]).addClass("hidden")
+        }
     }
 });
 
