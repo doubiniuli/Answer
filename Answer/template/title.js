@@ -9,7 +9,6 @@ function isAcceptButton(x, y) {
     return ptInRect(x, y, acceptLeft, acceptTop, acceptRight, acceptBottom);
 }
 
-
 var shareLeft = 0.55;
 var shareTop = 0.73;
 var shareRight = 0.91;
@@ -45,7 +44,7 @@ $('body').click(function (e) {
 
 var appid = "wx6ee8795bbaee6f5d";
 var url = document.location.href;
-var title = "赛道学霸挑战赛，你想参与吗？";
+var titleFinal = title + ".你想参与吗？";
 var desc = "";
 var link = "http://othergame.yaohehe.com/static/index.html";
 var imgUrl = "http://othergame.yaohehe.com/static/small-img/index.jpg";
@@ -79,7 +78,7 @@ $.ajax({
 wx.ready(function(){
 
 wx.onMenuShareTimeline({
-    title: title, // 分享标题
+    title: titleFinal, // 分享标题
     link: link, // 分享链接
     imgUrl: imgUrl, // 分享图标
     success: function () {
@@ -91,7 +90,7 @@ wx.onMenuShareTimeline({
 });
 
 wx.onMenuShareAppMessage({
-    title: title, // 分享标题
+    title: titleFinal, // 分享标题
     desc: desc, // 分享描述
     link: link, // 分享链接
     imgUrl: imgUrl, // 分享图标
@@ -106,7 +105,7 @@ wx.onMenuShareAppMessage({
 });
 
 wx.onMenuShareQQ({
-    title: title, // 分享标题
+    title: titleFinal, // 分享标题
     desc: desc, // 分享描述
     link: link, // 分享链接
     imgUrl: imgUrl, // 分享图标
@@ -120,7 +119,7 @@ wx.onMenuShareQQ({
 
 
 wx.onMenuShareWeibo({
-    title: title, // 分享标题
+    title: titleFinal, // 分享标题
     desc: desc, // 分享描述
     link: link, // 分享链接
     imgUrl: imgUrl, // 分享图标
@@ -133,7 +132,7 @@ wx.onMenuShareWeibo({
 });
 
 wx.onMenuShareQZone({
-    title: title, // 分享标题
+    title: titleFinal, // 分享标题
     desc: desc, // 分享描述
     link: link, // 分享链接
     imgUrl: imgUrl, // 分享图标
