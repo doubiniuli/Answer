@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     # url(r'^list', views.admin_nav),
     url(r'^problem', views.get_problem_html),
     url(r'^weixin', views.get_weixin_auth),
-    url(r'^submit', views.get_submit)
+    url(r'^submit', views.get_submit),
+    url(r'^list', views.list_participant)
 )
