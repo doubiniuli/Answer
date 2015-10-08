@@ -8,6 +8,7 @@ import logging
 import time
 import hashlib
 import json
+from django.core import serializers
 # Create your views here.
 
 problem_infoMap = {
@@ -93,7 +94,7 @@ def add_participant(request):
 def list_participant(request):
     s = request.GET.get('s')
     r = request.GET.get('r')
-    return Participant.objects.all()[s:s + r]
+    return serializers.serialize('json', Participant.objects.all()[s:s + r])
 
 # @csrf_exempt
 @catch_view_exception
