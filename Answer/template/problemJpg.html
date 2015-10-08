@@ -52,6 +52,8 @@
         $(selected).addClass(' hidden ');
         selected = $('#select' + s)[0];
         $(selected).removeClass('hidden');
+
+        window.scrollTo(0, document.body.scrollHeight);
         if (s === commonInfo.correctAnswer) {
             commonInfo.correctNum += 1;
         }
@@ -64,6 +66,7 @@
             jump2next();
         }
 
+        window.scrollTo(0, document.body.scrollHeight);
         var body = $('body')[0];
         var x = e.pageX / body.clientWidth;
         var y = e.pageY / body.clientHeight;

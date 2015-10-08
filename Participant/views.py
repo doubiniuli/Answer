@@ -145,7 +145,7 @@ def get_weixin_auth(request):
     now = int(time.time())
     callback = request.GET.get("callback")
 
-    if wx_auth[1] > now + 15:
+    if wx_auth[1] + 15 < now:
         update_weixin_auth()
 
     t = wx_auth[1]
