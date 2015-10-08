@@ -47,8 +47,8 @@ var appid = "wx6ee8795bbaee6f5d";
 var url = document.location.href;
 var title = "赛道学霸挑战赛，你想参与吗？";
 var desc = "";
-var link = "http://www.zhaopg.com/static/index.html";
-var imgUrl = "http://www.zhaopg.com/static/small-img/index.jpg";
+var link = "http://othergame.yaohehe.com/static/index.html";
+var imgUrl = "http://othergame.yaohehe.com/static/small-img/index.jpg";
 
 
 $.ajax({
