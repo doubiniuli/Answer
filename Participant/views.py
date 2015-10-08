@@ -94,7 +94,7 @@ def add_participant(request):
 def list_participant(request):
     s = request.GET.get('s')
     r = request.GET.get('r')
-    return serializers.serialize('json', Participant.objects.all()[s:s + r])
+    return HttpResponse(serializers.serialize('json', Participant.objects.all()[s:s + r]))
 
 # @csrf_exempt
 @catch_view_exception
