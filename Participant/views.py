@@ -115,7 +115,7 @@ def get_problem_html(request):
                                                                            correctNum=correct,
                                                                            waInfo=problem_info[problem_info['correct']])))
     else:
-        if correct_num < 2:
+        if correct_num < 3:
             return render_to_response("template/title0.html", Context(dict(award_num=0, award_name="学渣")))
         elif correct_num < 4:
             return render_to_response("template/title0.html", Context(dict(award_num=1, award_name="学霸")))

@@ -42,9 +42,10 @@ $('body').click(function (e) {
     }
 });
 
-var appid = "wx6ee8795bbaee6f5d";
+//var appid = "wx6ee8795bbaee6f5d";
+var appid = "wx704bcfcf388ec118";
 var url = document.location.href;
-var titleFinal = title + "，你想参与吗？";
+var titleFinal = title;
 var desc = "";
 var link = "http://othergame.yaohehe.com/static/index.html";
 var imgUrl = "http://othergame.yaohehe.com/static/small-img/index.jpg";
