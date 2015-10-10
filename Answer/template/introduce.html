@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title></title>
+</head>
+<body>
+    <div class="full-container">
+        <img src="/static/middle-img/introduce.jpg" class="full-pic">
+    </div>
+</body>
+
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="/static/index.js"></script>
+<script src="/static/utils.js"></script>
+
+<script>
+
+$('body').click(function (e) {
+    var left = 0.274;
+    var top = 0.69;
+    var right = 0.73;
+    var bottom = 0.76;
+    var img = $('body')[0];
+    var width = img.clientWidth;
+    var height = img.clientHeight;
+    var x = e.pageX / width;
+    var y = e.pageY / height;
+
+    console.log(x);
+    console.log(y);
+    console.log(ptInRect);
+    console.log(ptInRect(x, y, left, top, right, bottom))
+
+    if (ptInRect(x, y, left, top, right, bottom)) {
+        window.location.href="/participant/problem?name=1&correct=0";
+    }
+});
+</script>
+</html>
