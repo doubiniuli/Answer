@@ -3,7 +3,30 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/static/main.css">
-    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+.message-mask{
+	position:fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	background:rgba(0,0,0,.3);
+	display:none
+}
+.message-body{
+	position:absolute;
+	margin:30px 0 0 30%;;
+	background:#FFF;
+	border-radius:10px;
+	border:1px solid #D0D0D0;
+	width:40%;
+	padding:10px;
+	text-align:center;
+}
+</style>
+
 </head>
 <style>
     .info-input {
@@ -11,6 +34,9 @@
         border-color: gray;
         border-width: 2px;
         font-size: 35px;
+    }
+    .body {
+        TEXT-ALIGN: center;
     }
 </style>
 <body style="border-right: 0px;">
@@ -30,13 +56,31 @@
             </div>
         </div>
     </form>
+
+    <div id="message-box" class="message-mask">
+	<div class="message-body">
+		<span id="message-text"></span>
+		<div algin="right" style="margin:10px auto 0">
+			<button onclick="document.getElementById('message-box').style.display='none'">确定</button>
+		</div>
+	</div>
+</div>
 </body>
+
 
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 <script src="/static/utils.js"></script>
 
+<script>
+window.alert = function(text){
+	document.getElementById('message-text').innerHTML = text;
+	document.getElementById('message-box').style.display='block';
+}
+                </script>
 
 <script>
+
+
     var submitLeft = 0.32;
     var submitTop = 0.685;
 
