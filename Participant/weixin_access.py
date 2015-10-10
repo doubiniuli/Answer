@@ -16,12 +16,15 @@ online_write_db = web.database(dbn='mysql',
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s [line:%(lineno)d] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    filename=os.path.join(os.getcwd(), 'log.txt'),
+                    filename=os.path.join(os.getcwd(), 'log-weixin.txt'),
                     filemode='w')
-
+#
 APP_ID = "wx6ee8795bbaee6f5d"
 secret = "c187ef0bea83964dd4c89f41d1bffc42"
-ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx6ee8795bbaee6f5d&secret=c187ef0bea83964dd4c89f41d1bffc42"
+# huangshu
+# APP_ID = "wx704bcfcf388ec118"
+# secret = "1ddab7a81ffa5b87c025818d96b962be"
+ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s" % (APP_ID, secret)
 
 
 def get_js_tickets(access_token):
@@ -40,7 +43,7 @@ def get_access_token():
 
 
 def update_weixin_model():
-    app_id = "wx6ee8795bbaee6f5d"
+    app_id = APP_ID
     access_token =get_access_token()
     logging.info("Get token.")
     if access_token is None:
@@ -51,7 +54,7 @@ def update_weixin_model():
         return None
     logging.info("Update database.")
     online_write_db.query("update Weixin set access_token='%s', js_ticket='%s' where app_id='%s'" % (access_token, jsapi, app_id))
-
+    return True
 
 if __name__ == '__main__':
     # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Answer.settings")
@@ -59,9 +62,10 @@ if __name__ == '__main__':
     while True:
         try:
             logging.info("Start update")
-            update_weixin_model()
-            time.sleep(3000)
+            if update_weixin_model():
+                time.sleep(3000)
         except Exception as e:
+            logging.info("Exception occur.")
             logging.exception(e)
 
 

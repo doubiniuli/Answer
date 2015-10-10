@@ -57,12 +57,15 @@ problem_infoMap = {
     }
 }
 
-wx_auth = None
+APP_ID = "wx704bcfcf388ec118"
+wx_auth_info = None
 
 
 def update_weixin_auth():
-    global wx_auth
-    wx_auth = (Weixin.objects.all()[0], int(time.time()))
+    global wx_auth_info
+    wx_all = Weixin.objects.all()
+    if wx_all > 0:
+        wx_auth_info = ({wx.app_id: wx for wx in Weixin.objects.get(app_id=APP_ID)}, int(time.time()))
 
 
 def catch_view_exception(fn):
@@ -145,11 +148,17 @@ def get_weixin_auth(request):
     url = request.GET.get("url")
     now = int(time.time())
     callback = request.GET.get("callback")
+    app_id = request.GET.get("app_id")
+    if app_id is None:
+        app_id = APP_ID
 
-    if wx_auth[1] + 15 < now:
+    if wx_auth_info[1] + 15 < now:
         update_weixin_auth()
 
-    t = wx_auth[1]
+    wx_auth, cache_time = wx_auth_info[0].get(app_id), wx_auth_info[1]
+    if wx_auth is None:
+        return HttpResponse("Failed.")
+    t = cache_time
     js_api = wx_auth[0].js_ticket
     return HttpResponse(callback + "(" + json.dumps({
         "jsTicket": js_api,
