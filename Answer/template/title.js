@@ -42,8 +42,8 @@ $('body').click(function (e) {
     }
 });
 
-//var appid = "wx6ee8795bbaee6f5d";
-var appid = "wx704bcfcf388ec118";
+var appid = "wx6ee8795bbaee6f5d";
+//var appid = "wx704bcfcf388ec118";
 var url = document.location.href;
 var titleFinal = title;
 var desc = "";
