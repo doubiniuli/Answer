@@ -5,18 +5,30 @@
     <link rel="stylesheet" type="text/css" href="main.css">
     <title></title>
 </head>
-<body>
+<body id="index-body">
     <div class="full-container">
         <img src="/static/middle-img/index.jpg" class="full-pic">
     </div>
 </body>
 
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-
+<script src="//touch.code.baidu.com/touch.min.js"></script>
 <script>
 
-$('body').click(function (e) {
-    window.location.href="/static/introduce.html";
+$(document).ready(function() {
+    $('body').click(function (e) {
+        window.location.href="/static/introduce.html";
+    });
+    touch.on('#index-body', 'touchstart', function(ev){
+	    ev.preventDefault();
+    });
+
+    var target = document.getElementById("index-body");
+    target.style.webkitTransition = 'all ease 0.2s';
+
+    touch.on(target, 'swipeup', function(ev){
+        window.location.href="/static/introduce.html";
+    });
 });
 </script>
 </html>
