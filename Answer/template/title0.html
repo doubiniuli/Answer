@@ -8,7 +8,7 @@
 </head>
 <body style="border-right: 0px;">
 
-<img src="/static/middle-img/title0.jpg" class="full-pic" id="image">
+<img src="/static/middle-img/title{{ award_num }}.jpg" class="full-pic" id="image">
 <div id="share_jpg" class="share_mask hidden">
 	<img src="/static/share_pic.png" alt="">
 </div>
@@ -17,7 +17,7 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
 <script>
-    var title = "我在挑战中获得了学渣称号";
+    var title = "我在挑战中获得了{{ award_name }}称号，你呢？";
 </script>
 
 <script src="/static/index.js"></script>
