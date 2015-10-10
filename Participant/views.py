@@ -57,7 +57,7 @@ problem_infoMap = {
     }
 }
 
-APP_ID = "wx704bcfcf388ec118"
+APP_ID = "wx6ee8795bbaee6f5d"
 wx_auth_info = None
 
 
@@ -65,7 +65,7 @@ def update_weixin_auth():
     global wx_auth_info
     wx_all = Weixin.objects.all()
     if wx_all > 0:
-        wx_auth_info = ({wx.app_id: wx for wx in Weixin.objects.get(app_id=APP_ID)}, int(time.time()))
+        wx_auth_info = ({wx.app_id: wx for wx in Weixin.objects.all()}, int(time.time()))
 
 
 def catch_view_exception(fn):
