@@ -159,7 +159,7 @@ def get_weixin_auth(request):
     if wx_auth is None:
         return HttpResponse("Failed.")
     t = cache_time
-    js_api = wx_auth[0].js_ticket
+    js_api = wx_auth.js_ticket
     return HttpResponse(callback + "(" + json.dumps({
         "jsTicket": js_api,
         "noncestr": NONCE_STR,
