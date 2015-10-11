@@ -4,8 +4,8 @@ var appid = "wx6ee8795bbaee6f5d";
 var url = document.location.href;
 var titleFinal = title;
 var desc = "";
-var link = "http://othergame.yaohehe.com/static/index.html";
-var imgUrl = "http://othergame.yaohehe.com/static/small-img/index.jpg";
+var link = "http://tramps.yaohehe.com/static/index.html";
+var imgUrl = "http://tramps.yaohehe.com/static/small-img/index.jpg";
 
 
 $.ajax({
