@@ -53,7 +53,7 @@ var imgUrl = "http://othergame.yaohehe.com/static/small-img/index.jpg";
 
 $.ajax({
 	type: 'GET',
-	url: '/participant/weixin?appid=' + appid + '&url=' + encodeURIComponent(url),
+	url: '/participant/weixin?app_id=' + appid + '&url=' + encodeURIComponent(url),
 	dataType: 'jsonp',
 	success: function (data) {
 		console.log(data);
