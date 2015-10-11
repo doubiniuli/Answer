@@ -65,6 +65,7 @@ if __name__ == '__main__':
             if update_weixin_model():
                 time.sleep(3000)
         except Exception as e:
+            time.sleep(300)
             logging.info("Exception occur.")
             logging.exception(e)
 
