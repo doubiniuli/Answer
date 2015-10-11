@@ -19,11 +19,11 @@ logging.basicConfig(level=logging.DEBUG,
                     filename=os.path.join(os.getcwd(), 'log-weixin.txt'),
                     filemode='w')
 #
-APP_ID = "wx6ee8795bbaee6f5d"
-secret = "c187ef0bea83964dd4c89f41d1bffc42"
+#APP_ID = "wx6ee8795bbaee6f5d"
+#secret = "c187ef0bea83964dd4c89f41d1bffc42"
 # huangshu
-# APP_ID = "wx704bcfcf388ec118"
-# secret = "1ddab7a81ffa5b87c025818d96b962be"
+APP_ID = "wx704bcfcf388ec118"
+secret = "1ddab7a81ffa5b87c025818d96b962be"
 ACCESS_TOKEN = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s" % (APP_ID, secret)
 
 
